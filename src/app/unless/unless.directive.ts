@@ -6,10 +6,12 @@ import { Directive, Input, ViewContainerRef, TemplateRef } from '@angular/core';
 export class UnlessDirective {
   // we need to get condition as an Input and bind to a property called unless
   // whenever the condition changes, we want to execute a method (setter is executed when the condition changes)
-  @Input() set unless(condition: boolean) {
+  @Input() set appUnless(condition: boolean) {
     if (!condition) {
+      // creates a view (our tempRef) in the container
       this.vcRef.createEmbeddedView(this.tempRef)
     } else {
+      // remove everything from this place in the DOM
       this.vcRef.clear()
     }
 
